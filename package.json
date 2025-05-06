@@ -1,9 +1,8 @@
 {
   "name": "notion-search-api",
   "version": "1.0.0",
-  "main": "src/searchApi.js",
+  "main": "searchApi.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
