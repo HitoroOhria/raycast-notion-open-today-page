@@ -11,20 +11,23 @@ const dailyPageUrl = 'https://www.notion.so/Daily-36bd146c72f14de5920f9a6ee6b2ad
 const padTwoDigits = (num) => {
   return String(num).padStart(2, '0');
 }
-// Like '2025-05-06'
-const today = (() => {
+// Like '2025-05-06' and '2025-05'
+const { today, thisMonth } = (() => {
   const now = new Date()
   const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
+  const month = padTwoDigits(now.getMonth() + 1);
+  const day = padTwoDigits(now.getDate());
 
-  return `${year}-${padTwoDigits(month)}-${padTwoDigits(day)}`
+  return {
+    today: `${year}-${month}-${day}`,
+    thisMonth: `${year}-${month}`,
+  }
 })();
 
-const getTitle = function(page) {
+const getTitle = (page) => {
   return page.properties.title.title[0].text.content
 };
-const getUrl = function(page) {
+const getUrl = (page) => {
   return page.url
 };
 
@@ -42,8 +45,18 @@ const getUrl = function(page) {
   const todayPage = response.results.find(page => {
     return getTitle(page) === today
   })
+  if (todayPage !== undefined) {
+    await open.default(getUrl(todayPage))
+    return;
+  }
 
-  const url = todayPage === undefined ? dailyPageUrl : getUrl(todayPage)
-  await open.default(url)
+  const thisMonthPage = response.results.find(page => {
+    return getTitle(page) === thisMonth
+  })
+  if (thisMonthPage !== undefined) {
+    await open.default(getUrl(thisMonthPage))
+    return;
+  }
+
+  await open.default(dailyPageUrl)
 })();
-
