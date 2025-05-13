@@ -67,7 +67,7 @@ const searchPage = async (query) => {
 };
 
 // see https://developers.notion.com/reference/post-page
-const crateTodayContentsPage = async (parentPageId, title) => {
+const crateTodayPage = async (parentPageId, title) => {
   return await notion.pages.create({
     parent: {
       type: "page_id",
@@ -157,7 +157,7 @@ const OpenOrCreateTodayPage = async () => {
     return getTitle(page) === thisMonth;
   });
   if (available(thisMonthPage)) {
-    const todayPage = await crateTodayContentsPage(thisMonthPage.id, today);
+    const todayPage = await crateTodayPage(thisMonthPage.id, today);
     await open.default(getUrl(todayPage));
     return;
   }
