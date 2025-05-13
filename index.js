@@ -139,7 +139,8 @@ const crateTodayContentsPage = async (parentPageId, title) => {
 };
 
 // Open today page.
-const openTodayPage = async () => {
+// If not exists, create today page.
+const OpenOrCreateTodayPage = async () => {
   const response = await searchPage(today);
 
   // open today page.
@@ -169,5 +170,5 @@ const openTodayPage = async () => {
   // await retrievePageProperties("page_id");
   // await retrieveBlockChildren("page_id");
 
-  await openTodayPage();
+  await OpenOrCreateTodayPage();
 })();
