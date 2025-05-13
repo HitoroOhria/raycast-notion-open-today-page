@@ -6,4 +6,3 @@ Notion integration page is [here](https://www.notion.so/profile/integrations/int
 
 - [x] Open today page
 - [ ] Create today page if not exist
-
