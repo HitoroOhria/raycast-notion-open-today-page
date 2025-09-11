@@ -7,3 +7,24 @@ Notion integration page is [here](https://www.notion.so/profile/integrations/int
 - [x] Open today page
 - [x] Create today page if not exist
 - [ ] Create Monthly page if not exist
+
+# Usage
+
+Install dependency packages.
+
+```shell
+$ npm i
+```
+
+Get your Notion API key from [here](https://www.notion.so/profile/integrations).
+
+```shell
+// .evn
+NOTION_API_KEY=<your-notion-api-key>
+```
+
+Run script.
+
+```shell
+$ npm run exec
+```
