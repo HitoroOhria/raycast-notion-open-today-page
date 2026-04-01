@@ -19,7 +19,7 @@ $ npm i
 Get your Notion API key from [here](https://www.notion.so/profile/integrations).
 
 ```shell
-// .evn
+// .env
 NOTION_API_KEY=<your-notion-api-key>
 ```
 
